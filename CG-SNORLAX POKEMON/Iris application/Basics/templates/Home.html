@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://th.bing.com/th/id/OIP.vA1AyyXVZGakpvyE2s8c6AHaEo?pid=ImgDet&rs=1'); /* Replace with your background image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            color: #090808;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .result {
+            background-color: rgba(157, 40, 40, 0.8);
+            border-radius: 10px;
+            font-size: 24px;
+            padding: 20px;
+            max-width: 400px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What flower is it?</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Enter the Sepal Length:</td>
+                    <td><input type="text" name="sl"></td>
+                </tr>
+                <tr>
+                    <td>Enter the Sepal Width:</td>
+                    <td><input type="text" name="sw"></td>
+                </tr>
+                <tr>
+                    <td>Enter the Petal Length:</td>
+                    <td><input type="text" name="pl"></td>
+                </tr>
+                <tr>
+                    <td>Enter the Petal Width:</td>
+                    <td><input type="text" name="pw"></td>
+                </tr>
+            </table>
+            <div class="container">
+            <button type="submit" name="Submit">Predict</button>
+            <p>The Flower is:</p>
+            <p class="result">{{result}}</p>
+        </form>
+    </div>
+</body>
+</html>
